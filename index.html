@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        .done {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="write" placeholder="Add a Todo and press Enter">
+    <ul id="todoList"></ul>
+
+    <script>
+        let write = document.getElementById('write');
+        let todoList = document.getElementById("todoList");
+
+        write.addEventListener("keyup", function(e) {
+            if (e.key === "Enter" && this.value.trim() !== '') {
+                addTodo(this.value);
+                this.value = '';
+            }
+        });
+
+        function addTodo(val) {
+
+            // Creating a new list item element
+            var listItem = document.createElement('li');
+            
+          
+            listItem.innerHTML = val;
+
+       
+            listItem.addEventListener('click', function() {
+                this.classList.toggle('done');
+            });
+
+  
+            todoList.appendChild(listItem);
+        }
+    </script>
+</body>
+</html>
